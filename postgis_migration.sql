@@ -103,9 +103,9 @@ begin
       )
   where h.id = target_hazard_id;
 
-  return coalesce(new, old);
+  return null; -- AFTER triggers ignore the returned row.
 end;
-$$;
+$;
 
 drop trigger if exists hazard_reports_refresh_counts on public.hazard_reports;
 create trigger hazard_reports_refresh_counts
